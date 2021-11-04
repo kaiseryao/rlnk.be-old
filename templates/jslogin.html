@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>	
+		<title>JavaScript Simple Login System</title>
+		<link rel="shortcut icon" href="favicon.ico">
+	</head>
+	<body>
+		<form>
+			<input type="text" id="username" placeholder="Choose Username">
+			<input type="password" id="password" placeholer="Choose Password">
+			<button type="button" onclick="getInfo()">Click Me</button>
+		</form>
+
+    <script>
+      var objPeople = [
+        { // Object @ 0 index
+          username: "yao",
+          password: "kaiser"
+        },
+        { // Object @ 1 index
+          username: "matt",
+          password: "academy"
+        },
+        { // Object @ 2 index
+          username: "chris",
+          password: "forever"
+        }
+
+      ]    
+    </script>
+
+
+		<script>
+      function getInfo() {
+        var username = document.getElementById('username').value
+        var password = document.getElementById('password').value
+
+        for(var i = 0; i < objPeople.length; i++) {
+          // check is user input matches username and password of a current index of the objPeople array
+          if(username == objPeople[i].username && password == objPeople[i].password) {
+            console.log(username + " is logged in!!!")
+            // stop the function if this is found to be true
+            return
+          }
+        }
+        console.log("incorrect username or password")
+      }      
+    </script>
+	</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="login.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rlnk.be | Login</title>
+
+    <link rel='stylesheet' href='//cdn.repl.email/styles/water.css'>
+</head>
+<body>
+
+
+
+    <script src='//code.jquery.com/jquery.min.js'></script>
+
+    <h1>rlnk.be URL Shortener - BETA</h1>
+    <a href="https://rlnk.be"><button>Back</button></a>
+    <hr>
+
+    <label for='log'>Username</label>
+    <input name='log' id='username'>
+
+    <label type='text' for='log'>Password</label>
+    <input type='password' name='log' id='password'>
+  
+
+    <button id='CopyButton' style=display:block; onclick="getInfo()">Login</button>
+
+
+    <h3 id='res'></h3>
+    <script>
+      function myFunction() {
+
+        /* Alert the copied text */
+        $('#res').text('password or username are wrong!');
+      }      
+    </script>
+    <script>
+      var objPeople = [
+        { // Object @ 0 index
+          username: "yao",
+          password: "kaiser"
+        },
+        { // Object @ 1 index
+          username: "matt",
+          password: "academy"
+        },
+        { // Object @ 2 index
+          username: "chris",
+          password: "forever"
+        }
+
+      ]    
+    </script>
+
+
+		<script>
+      function getInfo() {
+        var username = document.getElementById('username').value
+        var password = document.getElementById('password').value
+
+        for(var i = 0; i < objPeople.length; i++) {
+          // check is user input matches username and password of a current index of the objPeople array
+          if(username == objPeople[i].username && password == objPeople[i].password) {
+            console.log(username + " is logged in!!!")
+            window.location="/stats"
+            // stop the function if this is found to be true
+            return
+          }
+        }
+        $('#res').text('password or username are wrong!');
+      }      
+    </script>    
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script data-ad-client="ca-pub-1426187593611314" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script data-ad-client="ca-pub-1426187593611314" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rlnk.be | Free URL Shortener</title>
+
+    <meta name="description" content="Kürze deine Links kostenlos auf rlnk.be">
+    <meta name="keywords" content="link, link shortener, free link shortener, rlnk.be, yao link shortener, rexarmy link shortener, rlnkt, relink, rlnk link shortener, bit.ly alternative">
+
+    <link rel='stylesheet' href='//cdn.repl.email/styles/water.css'>
+    <link rel='stylesheet' href='water.css'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    <link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
+    <style>
+      button.animated {
+        width: 180px; /* Change image size for mobile */
+        -webkit-animation-name: anime;
+                animation-name: anime;
+        -webkit-animation-duration: 5s;
+                animation-duration: 5s;
+        -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+        -webkit-animation-timing-function: ease-in-out;
+                animation-timing-function: ease-in-out;
+      }
+
+
+      @-webkit-keyframes anime {
+        0% {
+          -webkit-transform: scale(1);
+                  transform: scale(1);
+        }
+        50% {
+          -webkit-transform: scale(1.10);
+                  transform: scale(1.10);
+        }
+        100% {
+          -webkit-transform: scale(1);
+                  transform: scale(1);
+        }
+      }
+
+      @keyframes anime {
+        0% {
+          -webkit-transform: scale(1);
+                  transform: scale(1);
+        }
+        50% {
+          -webkit-transform: scale(1.10);
+                  transform: scale(1.10);
+        }
+        100% {
+          -webkit-transform: scale(1);
+                  transform: scale(1);
+        }
+      }
+
+    </style>
+</head>
+<body>
+
+
+    <script src='//code.jquery.com/jquery.min.js'></script>
+
+    <h1>rlnk.be URL Shortener</h1>
+    <a href="https://rlnk.be/v2"><button class="animated">Beta Version</button></a>
+    <a href="https://rlnk.be/login"><button>Login</button></a>
+    <a href="https://rlnk.be/login"><button>Statistics</button></a>
+    <hr>
+    <br>
+    <br>
+    <input name='url' id='myImput' placeholder="Paste your long URL" required>
+    <input name='key' id='key' placeholder="Alias (optional)">
+    <div class="g-recaptcha" data-sitekey="6Ld6pwwaAAAAAPd4yCGXGoIJ8336m5w7AaxMtrNK"></div>
+    <button id='ShortButton' onclick='shorten()'>Shorten</button>
+
+
+    <button id='CopyButton' style=display:none; onclick="myFunction()">Copy link</button>
+
+    
+    <button id='MoreButton' style=display:none; onclick=location.href="https://rlnk.be">Shorten more URLs</button>
+
+
+    <h3 id='res'></h3>
+
+    <script>
+      function onSubmit(token) {
+        document.getElementById("ShortButton").submit();
+      }
+    </script>
+
+    <script>
+        function shorten() {
+            url = $('input[name=url]').val();
+            if (url) {
+                $.post('/api/create', {'url': url}, (res) => {
+                    $('#res').html(`<a href='${res["url"]}'>${res['key']}</a>`);
+                    document.getElementById("myImput").value = `https://rlnk.be/${res['key']}`;
+                    document.getElementById('CopyButton').style.display = 'block'; document.getElementById('ShortButton').style.display = 'none'; 
+                    document.getElementById('key').style.display = 'none'; 
+                })
+            } else {
+                $('#res').text('Invalid URL!');
+            }
+        }
+    </script>
+
+    <script>
+      function myFunction() {
+        /* Get the text field */
+        var copyText = document.getElementById("myImput");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+        document.getElementById('MoreButton').style.display = 'block'; 
+
+        /* Alert the copied text */
+        $('#res').text('Copied!');
+      }      
+    </script>
+    <p>By <a href="https://ywk.ch">YWK</a></p><br>
+    <p><a href="/impressum">Impressum</a></p>
+    <p><a href="/datenschutz">Datenschutz</a></p>
+
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#23272A",
+      "text": "#ffffff"
+    },
+    "button": {
+      "background": "#7289DA"
+    }
+  },
+  "position": "bottom-right",
+  "type": "opt-in",
+  "content": {
+    "message": "Diese Website speichert Cookies auf Ihrem Computer. Diese Cookies werden verwendet, um Informationen darüber zu sammeln, wie Sie mit unserer Website interagieren. Wir verwenden diese Informationen, um Ihre Browser-Erfahrung zu verbessern und anzupassen, sowie für Analysen und Messungen .",
+    "dismiss": "Ablehnen",
+    "allow": "Akzeptieren",
+    "link": "Mehr erfahren"
+  }
+});
+</script>
+</body>
+</html>

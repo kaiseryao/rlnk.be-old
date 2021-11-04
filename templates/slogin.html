@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rlnk.be | Login</title>
+
+    <link rel='stylesheet' href='//cdn.repl.email/styles/water.css'>
+</head>
+<body>
+
+
+
+    <script src='//code.jquery.com/jquery.min.js'></script>
+
+    <h1>rlnk.be URL Shortener - BETA</h1>
+    
+    <hr>
+
+    <label for='log'>Username</label>
+    <input type="text" name='log' id='username'>
+
+    <label for='log'>Password</label>
+    <input type="password" name='log' id='password'>
+  
+
+    <button id='CopyButton' style=display:block; onclick="myFunction()">Login</button>
+
+
+    <h3 id='res'></h3>
+    <script>
+      function myFunction() {
+
+        /* Alert the copied text */
+        $('#res').text('password or username are wrong!');
+      }      
+    </script>
+    
+</body>
+</html>
